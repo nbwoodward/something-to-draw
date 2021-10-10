@@ -1,5 +1,5 @@
 <template>
-  <Tutorial/>
+  <Photo/>
 </template>
 
 <script>
