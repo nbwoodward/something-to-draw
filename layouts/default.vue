@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Header />
-    <div id="content">
-      <Nuxt />
-    </div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&amp;family=Source+Code+Pro:wght@300&amp;display=swap"
+      rel="stylesheet"
+    />
+    <Nuxt />
   </div>
 </template>
 
@@ -14,10 +15,17 @@ html {
   margin: 0;
   overflow: hidden;
   background: #222;
+  font-family: 'Raleway';
+  box-sizing: border-box;
 }
-#content {
-  padding-top: 50px;
-  width: 100vw;
-  height: 100vh;
+div {
+  box-sizing: border-box;
+}
+a {
+  color: #222;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #d98b2a;
 }
 </style>
