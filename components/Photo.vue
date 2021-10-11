@@ -4,7 +4,8 @@
 
     <Loader v-if="fetching" />
     <Error v-else-if="error" :msg="error" />
-    <div v-else id="image" :style="style"></div>
+    <div v-else id="photo" :style="style"></div>
+    <Footer  :author-name="authorName" :author-url="authorUrl" :photo-url="downloadUrl"/>
   </div>
 </template>
 <script>
@@ -21,6 +22,9 @@ export default {
     return {
       unsplash: null,
       photo: '',
+      authorName: '',
+      authorUrl: '',
+      downloadUrl: '',
       fetching: false,
       error: '',
     }
@@ -41,13 +45,9 @@ export default {
       this.photo = this.getPhotoFromId(this.$route.query.p)
     } else {
       await this.getPhoto()
-      // this.getStaticPhoto()
     }
   },
   methods: {
-    getStaticPhoto() {
-      this.photo = this.getPhotoFromId('photo-1632475999234-a1c7f1511c31')
-    },
     getPhotoFromId(id) {
       return `https://images.unsplash.com/${id}?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjY1ODd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzM4OTk5Mjg&ixlib=rb-1.2.1&q=80&w=1080`
     },
@@ -58,6 +58,9 @@ export default {
       try {
         const resp = await this.unsplash.photos.getRandom(params)
         this.photo = resp.response.urls.regular
+        this.authorName = resp.response.user?.name
+        this.authorUrl = resp.response.user?.links?.html
+        this.downloadUrl = resp.response.links?.download
       } catch {
         this.error = 'No photo found for search'
         this.fetching = false
@@ -82,10 +85,11 @@ export default {
 <style>
 #content {
   padding-top: 50px;
+  padding-bottom: 30px;
   width: 100vw;
   height: 100vh;
 }
-#image {
+#photo {
   width: 100%;
   height: 100%;
   background-position: center center;
