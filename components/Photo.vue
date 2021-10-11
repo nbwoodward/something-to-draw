@@ -20,7 +20,7 @@ export default {
     },
     tag(){
       const path = this.$route?.path || ''
-      return path.replace(/[^a-zA-Z0-9]/gi,'');
+      return path.replace(/[^a-zA-Z0-9]/g,'');
     },
   },
   mounted() {
@@ -33,7 +33,6 @@ export default {
   },
   methods: {
     getStaticPhoto(){
-      console.log("PHOHOW", this.tax)
       this.photo = 'https://images.unsplash.com/photo-1632475999234-a1c7f1511c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjY1ODd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzM4OTk5Mjg&ixlib=rb-1.2.1&q=80&w=1080'
     },
     async getPhoto() {

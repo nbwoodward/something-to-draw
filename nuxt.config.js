@@ -34,7 +34,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/router',
+    ['@nuxtjs/router', { keepDefaultRouter: true }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

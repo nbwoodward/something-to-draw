@@ -19,6 +19,11 @@ export function createRouter() {
             name: 'dog',
           },
           {
+            path: 'cat',
+            component: Index,
+            name: 'cat',
+          },
+          {
             path: ':other',
             component: Index,
           },
