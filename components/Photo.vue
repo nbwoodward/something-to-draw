@@ -48,6 +48,7 @@ export default {
     }
   },
   methods: {
+    // TODO: get static photo from
     getPhotoFromId(id) {
       return `https://images.unsplash.com/${id}?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyNjY1ODd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MzM4OTk5Mjg&ixlib=rb-1.2.1&q=80&w=1080`
     },

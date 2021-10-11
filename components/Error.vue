@@ -1,11 +1,14 @@
 <template>
   <div id="error">
     <h3 id="error-inner">
-      {{msg}}
+      {{msg}} <br/>
+      Try searching for <NuxtLink :to="`/${tag}`" >{{tag}}</NuxtLink>
     </h3>
   </div>
 </template>
 <script>
+import tags from '@/tags'
+
 export default {
   props: {
     msg: {
@@ -13,7 +16,12 @@ export default {
       default: '',
       required: true,
     }
-  }
+  },
+  data(){
+    return {
+      tag: tags[Math.floor(Math.random() * tags.length)]
+    }
+  },
 }
 </script>
 <style>
@@ -31,5 +39,9 @@ export default {
   text-transform: uppercase;
   text-align: center;
   font-family: 'Source Code Pro';
+}
+#error-inner a{
+  color:#aaa;
+
 }
 </style>
