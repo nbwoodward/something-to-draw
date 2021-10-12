@@ -45,5 +45,6 @@ export default {
 }
 #footer a{
   color: #fff;
+  text-decoration: underline;
 }
 </style>

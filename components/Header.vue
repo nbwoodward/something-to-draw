@@ -2,7 +2,11 @@
   <div id="header">
     <NuxtLink id="title" to="/">somethingtodraw</NuxtLink>
     <div>
-      <input v-model="tagInner" @keyup.enter.prevent="setTag" />
+      <input
+        v-model="tagInner"
+        placeholder="Keyword"
+        @keyup.enter.prevent="setTag"
+      />
       <button @click="setTag">New Image</button>
     </div>
   </div>
@@ -21,11 +25,11 @@ export default {
       tagInner: this.tag,
     }
   },
-  methods:{
-    setTag(){
-      this.$emit('new-tag',this.tagInner)
-    }
-  }
+  methods: {
+    setTag() {
+      this.$emit('new-tag', this.tagInner)
+    },
+  },
 }
 </script>
 <style>
@@ -34,12 +38,21 @@ export default {
   top: 0;
   left: 0;
   background: #fff;
-  padding: 20px;
+  padding: 15px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 #title {
   text-transform: uppercase;
+}
+@media screen and (max-width: 762px) {
+  #header {
+    flex-direction: column;
+  }
+  #title{
+    margin-bottom:5px;
+    }
 }
 </style>
