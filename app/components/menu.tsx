@@ -1,12 +1,15 @@
+import Link from "next/link";
 
 interface MenuProps {
-  topic?: string
+  topic?: string;
 }
 
-export default ({topic}: MenuProps) => {
+const Menu = ({ topic }: MenuProps) => {
   return (
     <div id="menu">
-      <a href="/"> somethingtodraw {topic}</a>
+      <Link href="/"> somethingtodraw {topic}</Link>
     </div>
-  )
-}
+  );
+};
+
+export default Menu;

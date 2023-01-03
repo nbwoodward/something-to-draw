@@ -1,4 +1,4 @@
-export default () => {
+const Description = () => {
   return (
     <div id="description">
       <p>
@@ -16,8 +16,8 @@ export default () => {
         subject matter ready, start by lightly sketching out the basic shapes
         and forms of your subject. From there, you can add in details and refine
         your drawing. Remember to take breaks and step back from your drawing to
-        get a fresh perspective. Don't be afraid to make mistakes, as they can
-        often lead to unexpected and interesting results.
+        get a fresh perspective. Don&apos;t be afraid to make mistakes, as they
+        can often lead to unexpected and interesting results.
       </p>
 
       <h2>Benefits of Drawing</h2>
@@ -32,8 +32,10 @@ export default () => {
         time. Additionally, drawing can help to improve visual communication
         skills and can be a useful tool for problem-solving and design. Overall,
         drawing is a beneficial activity that can have numerous positive impacts
-        on an individual's physical and mental well-being.
+        on an individual&apos;s physical and mental well-being.
       </p>
     </div>
   );
 };
+
+export default Description;

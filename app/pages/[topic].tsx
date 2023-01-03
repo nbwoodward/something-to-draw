@@ -33,7 +33,7 @@ interface TopicProps {
   topic: string;
 }
 
-export default ({ photos, topic }: TopicProps) => {
+const Topic = ({ photos, topic }: TopicProps) => {
   const title = `Something To Draw - random pictures of ${topic} to draw`;
   return (
     <>
@@ -70,3 +70,5 @@ export async function getStaticProps(context: any) {
     revalidate: 300,
   };
 }
+
+export default Topic;
