@@ -16,8 +16,8 @@ const Menu = ({ topic }: MenuProps) => {
       <div id="menu-inner">
         <Link href="/"> somethingtodraw</Link>
         <div id="desktop-menu-links">
-          {allTopics.map((topic) => (
-            <Link key={topic.slug} href={`/${topic.slug}`}>{topic.name}</Link>
+          {allTopics.map((t) => (
+            <Link key={t.slug} className={topic === t.slug ? 'active': ''} href={`/${t.slug}`}>{t.name}</Link>
           ))}
         </div>
         <a id="hamberg-menu" onClick={() => setShowMenu(!showMenu)}>

@@ -81,7 +81,11 @@ a {
 }
 
 #menu #menu-inner #desktop-menu-links a{
-  padding: 0 20px;
+  padding: 3px 20px;
+}
+
+#menu #menu-inner #desktop-menu-links a.active{
+  border-bottom: 1px solid #ccc;
 }
 
 #menu #menu-inner #hamberg-menu{
