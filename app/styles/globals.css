@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#menu {
+  display:flex;
+  height:40px;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+#main {
+  width:100vw;
+  height: calc(100vh - 40px);
+  background: #222;
+  position: relative;
+}
+
+#main .photoButton {
+  height: 50px;
+  position: absolute;
+  top: calc(50% - 50px);
+  cursor: pointer;
+  color: white;
+  font-size:50px;
+}
+
+
+#buttonPrev {
+  left: 30px;
+}
+
+#buttonNext {
+  right: 30px;
+}
+
+#description{
+  padding:40px;
+  max-width:500px;
+  margin:auto;
+}
+
+#description h2{
+  margin: 20px 0 10px 0;
+}
+
+#description p{
+  line-height: 140%;
+}
