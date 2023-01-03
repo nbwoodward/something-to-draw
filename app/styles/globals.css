@@ -31,12 +31,18 @@ a {
 }
 
 #main .photoButton {
-  height: 50px;
+  height: calc(100% - 40px);
   position: absolute;
-  top: calc(50% - 50px);
+  top: 40px;
   cursor: pointer;
-  color: white;
-  font-size:50px;
+  color: #fff;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+}
+
+#main .photoButton:hover {
+  opacity: 50%;
 }
 
 

@@ -1,4 +1,18 @@
-const Description = () => {
+import { allTopics } from "../lib/data";
+
+const defaultTopicName = "From Photos"
+const defaultTopicDescription = "To draw from a photo, start by studying the photo and identifying the basic shapes and structures within it. Then, sketch out the basic lines and shapes of the objects in the photo using a light pencil. Add details and shading to bring the drawing to life, paying attention to the values and colors in the original photo for reference. Keep practicing and experimenting with different techniques to improve your skills."
+
+interface DescriptionProps {
+  topic?: string
+}
+
+const Description = ({topic}: DescriptionProps) => {
+
+  let topicObj = allTopics.filter(t => t.slug === topic)?.[0]
+  const topicName =  topicObj?.name || defaultTopicName
+  const topicDescription =  topicObj?.description || defaultTopicDescription
+
   return (
     <div id="description">
       <p>
@@ -33,6 +47,10 @@ const Description = () => {
         skills and can be a useful tool for problem-solving and design. Overall,
         drawing is a beneficial activity that can have numerous positive impacts
         on an individual&apos;s physical and mental well-being.
+      </p>
+      <h2>How to Draw {topicName}</h2>
+      <p>
+        {topicDescription}
       </p>
     </div>
   );

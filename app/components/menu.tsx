@@ -14,7 +14,7 @@ const Menu = ({ topic }: MenuProps) => {
   return (
     <div id="menu">
       <div id="menu-inner">
-        <Link href="/"> somethingtodraw {topic}</Link>
+        <Link href="/"> somethingtodraw</Link>
         <div id="desktop-menu-links">
           {allTopics.map((topic) => (
             <Link key={topic.slug} href={`/${topic.slug}`}>{topic.name}</Link>

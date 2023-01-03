@@ -42,7 +42,7 @@ const App = ({ photos, topic }: AppProps) => {
           <BsChevronCompactRight />
         </div>
       </div>
-      <Description />
+      <Description topic={topic} />
     </div>
   );
 };

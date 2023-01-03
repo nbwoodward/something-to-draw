@@ -27,7 +27,7 @@ const Topic = ({ photos, topic }: TopicProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        <App photos={photos} />
+        <App photos={photos} topic={topic} />
       </main>
     </>
   );
