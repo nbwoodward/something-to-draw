@@ -61,3 +61,57 @@ a {
 #description p{
   line-height: 140%;
 }
+
+#menu #menu-inner{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#menu #menu-inner #desktop-menu-links{
+  display:flex;
+  align-items: center;
+}
+
+#menu #menu-inner #desktop-menu-links a{
+  padding: 0 20px;
+}
+
+#menu #menu-inner #hamberg-menu{
+  display:none;
+  font-size:20px;
+}
+
+#menu #mobile-menu-links{
+  display:none;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width:100%;
+  z-index:10;
+  background: #fff;
+}
+
+#menu #mobile-menu-links a{
+  display:block;
+  padding: 20px;
+  width:100%;
+  border-top: 1px solid #eee;
+}
+
+
+
+@media only screen and (max-width: 738px) {
+  #menu #menu-inner #desktop-menu-links{
+    display: none;
+  }
+
+  #menu #menu-inner #hamberg-menu{
+    display: flex;
+  }
+
+  #menu #mobile-menu-links{
+    display: block;
+  }
+}

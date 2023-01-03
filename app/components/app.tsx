@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Photo as PhotoType } from "../lib/data";
 import Photo from "./photo";
 import Menu from "./menu";
@@ -11,7 +11,7 @@ interface AppProps {
 }
 
 const App = ({ photos, topic }: AppProps) => {
-  const [photo, setPhoto] = useState<PhotoType>(photos[0]);
+  const [photo, setPhoto] = useState<PhotoType>({url: ""} as PhotoType);
   const [idx, setIdx] = useState(0);
 
   const nextPhoto = () => {
@@ -25,6 +25,10 @@ const App = ({ photos, topic }: AppProps) => {
     setIdx(newIdx);
     setPhoto(photos[newIdx]);
   };
+
+  useEffect( () => {
+    setPhoto(photos[0])
+  }, [photos])
 
   return (
     <div>

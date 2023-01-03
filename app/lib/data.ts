@@ -3,3 +3,11 @@ export interface Photo {
   attributionUrl: string
   authorName: string
 }
+
+export const allTopics = [
+  {slug: "people", name: "People"},
+  {slug: "animals", name: "Animals"},
+  {slug: "nature", name: "Nature"},
+  {slug: "architecture-interior", name: "Architecture"},
+  {slug: "travel", name: "Travel"},
+]

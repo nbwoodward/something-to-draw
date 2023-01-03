@@ -3,30 +3,9 @@ import App from "../components/app";
 import { Inter } from "@next/font/google";
 import { Photo as PhotoType } from "../lib/data";
 import { getPhotos } from "../lib/photoProvider/unsplash";
+import {allTopics} from '../lib/data'
 
 const inter = Inter({ subsets: ["latin"] });
-
-const allTopics = [
-  "wallpapers",
-  "3d-renders",
-  "travel",
-  "nature",
-  "street-photography",
-  "experimental",
-  "textures-patterns",
-  "animals",
-  "architecture-interior",
-  "fashion-beauty",
-  "film",
-  "food-drink",
-  "people",
-  "spirituality",
-  "business-work",
-  "athletics",
-  "health",
-  "current-events",
-  "arts-culture",
-];
 
 interface TopicProps {
   photos: PhotoType[];
@@ -35,6 +14,7 @@ interface TopicProps {
 
 const Topic = ({ photos, topic }: TopicProps) => {
   const title = `Something To Draw - random pictures of ${topic} to draw`;
+
   return (
     <>
       <Head>
@@ -54,7 +34,7 @@ const Topic = ({ photos, topic }: TopicProps) => {
 };
 
 export async function getStaticPaths() {
-  const paths = allTopics.map((topic) => ({ params: { topic: topic } }));
+  const paths = allTopics.map((topic) => ({ params: { topic: topic.slug } }));
   return {
     paths: paths,
     fallback: false, // can also be true or 'blocking'
