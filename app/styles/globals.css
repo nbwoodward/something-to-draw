@@ -88,8 +88,36 @@ a {
   border-bottom: 1px solid #ccc;
 }
 
+#menu #menu-inner #menu-right{
+  display: flex;
+  align-items: center;
+}
+
+#menu #menu-inner #share-button{
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-right: 12px;
+  cursor: pointer;
+  position: relative;
+}
+
+#menu #menu-inner #share-copied{
+  position: absolute;
+  top: 28px;
+  left: 0;
+  font-size: 12px;
+  white-space: nowrap;
+  background: #222;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 11;
+}
+
 #menu #menu-inner #hamberg-menu{
   display:none;
+  cursor: pointer;
   font-size:20px;
 }
 

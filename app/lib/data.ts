@@ -1,4 +1,5 @@
 export interface Photo {
+  id: string;
   url: string;
   attributionUrl: string;
   authorName: string;

@@ -8,31 +8,44 @@ import { BsChevronCompactRight, BsChevronCompactLeft } from "react-icons/bs";
 interface AppProps {
   photos: PhotoType[];
   topic?: string;
+  initialPhoto?: PhotoType | null;
 }
 
-const App = ({ photos, topic }: AppProps) => {
-  const [photo, setPhoto] = useState<PhotoType>({url: ""} as PhotoType);
+const buildList = (photos: PhotoType[], initialPhoto?: PhotoType | null) =>
+  initialPhoto
+    ? [initialPhoto, ...photos.filter((p) => p.id !== initialPhoto.id)]
+    : photos;
+
+const photoPath = (id: string, topic?: string) =>
+  topic ? `/${topic}/${id}` : `/photo/${id}`;
+
+const App = ({ photos, topic, initialPhoto }: AppProps) => {
+  const [list, setList] = useState<PhotoType[]>(() =>
+    buildList(photos, initialPhoto)
+  );
   const [idx, setIdx] = useState(0);
+  const photo = list[idx] || ({ url: "" } as PhotoType);
 
-  const nextPhoto = () => {
-    const newIdx = idx === photos.length - 1 ? 0 : idx + 1;
+  useEffect(() => {
+    setList(buildList(photos, initialPhoto));
+    setIdx(0);
+  }, [photos, initialPhoto]);
+
+  const goTo = (newIdx: number) => {
     setIdx(newIdx);
-    setPhoto(photos[newIdx]);
+    const id = list[newIdx]?.id;
+    if (id) {
+      // Keep Next's history state so back/forward keep working
+      window.history.replaceState(window.history.state, "", photoPath(id, topic));
+    }
   };
 
-  const prevPhoto = () => {
-    const newIdx = idx === 0 ? photos.length - 1 : idx - 1;
-    setIdx(newIdx);
-    setPhoto(photos[newIdx]);
-  };
-
-  useEffect( () => {
-    setPhoto(photos[0])
-  }, [photos])
+  const nextPhoto = () => goTo(idx === list.length - 1 ? 0 : idx + 1);
+  const prevPhoto = () => goTo(idx === 0 ? list.length - 1 : idx - 1);
 
   return (
     <div>
-      <Menu topic={topic} />
+      <Menu topic={topic} photoId={photo.id} />
       <div id="main">
         <Photo url={photo.url} />
         <div className="photoButton" id="buttonPrev" onClick={prevPhoto}>

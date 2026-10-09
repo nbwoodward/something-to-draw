@@ -3,6 +3,7 @@ import { Photo } from "../data";
 import axios from "axios";
 
 interface PhotoRespItem {
+  id: string;
   urls: {
     regular: string;
   };
@@ -47,19 +48,33 @@ const REQ_HEADERS = {
   Authorization: `Client-ID ${process.env.UNSPLASH_API_KEY}`,
 };
 
+const toPhoto = (photo: PhotoRespItem): Photo => ({
+  id: photo?.id,
+  url: photo?.urls?.regular,
+  attributionUrl: photo?.user?.links?.html,
+  authorName: photo?.user?.name,
+});
+
+export const getPhoto = async (id: string): Promise<Photo | null> => {
+  try {
+    const resp = await axios({
+      url: `https://api.unsplash.com/photos/${encodeURIComponent(id)}`,
+      headers: REQ_HEADERS,
+    });
+    const photo = resp.data as PhotoRespItem;
+    return photo?.urls?.regular?.includes("premium") ? null : toPhoto(photo);
+  } catch (e) {
+    return null;
+  }
+};
+
 export const getPhotos = async (params?: ProviderParams): Promise<Photo[]> => {
   try {
     const photoResp = await doPhotoRequest(params?.topic);
 
     // The flat map allows for kicking out premium watermarked photos
     const photos = photoResp.flatMap((photo: PhotoRespItem) =>
-      photo?.urls?.regular?.includes("premium")
-        ? []
-        : ({
-            url: photo?.urls?.regular,
-            attributionUrl: photo?.user?.links?.html,
-            authorName: photo?.user?.name,
-          } as Photo)
+      photo?.urls?.regular?.includes("premium") ? [] : [toPhoto(photo)]
     );
 
     return photos;
